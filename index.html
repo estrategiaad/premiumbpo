@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium BPO - Terceirização Financeira e de RH em Brasília</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Metatags de SEO -->
+    <meta name="description" content="Escale seu negócio terceirizando a gestão financeira e de recursos humanos com a Premium BPO. Focamos na burocracia para você focar no crescimento.">
+    <meta name="keywords" content="BPO financeiro, BPO RH, terceirização financeira, gestão de pessoas, escritório de contabilidade, Brasília">
+    
+    <!-- Open Graph (para redes sociais) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bpo.premiumcontabildf.com.br/">
+    <meta property="og:title" content="Premium BPO - Impulsionando o Crescimento da Sua Empresa">
+    <meta property="og:description" content="Soluções completas em gestão contábil, fiscal e de pessoal para transformar a gestão da sua empresa.">
+    <meta property="og:image" content="https://bpo.premiumcontabildf.com.br/social-preview.png">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://bpo.premiumcontabildf.com.br/">
+    <meta property="twitter:title" content="Premium BPO - Impulsionando o Crescimento da Sua Empresa">
+    <meta property="twitter:description" content="Soluções completas em gestão contábil, fiscal e de pessoal para transformar a gestão da sua empresa.">
+    <meta property="twitter:image" content="https://bpo.premiumcontabildf.com.br/social-preview.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Configuração de Cores Tailwind (Idêntica ao site principal) -->
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#007B7E',
+            'accent-dark': '#006a6d',
+            'accent-light': '#F2F9FE',
+            'accent-text': '#005a5c',
+          },
+        },
+      },
+    }
+    </script>
+    
+    <!-- Estilos CSS Customizados -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .animated-gradient {
+            background: linear-gradient(120deg, #f0f9ff, #f8fafc, #f0f9ff);
+            background-size: 200% 200%;
+            animation: gradient-animation 15s ease infinite;
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+     
+    <!-- Schema.org (JSON-LD) para SEO Avançado -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "Premium Contabilidade",
+      "url": "https://bpo.premiumcontabildf.com.br/",
+      "logo": "https://bpo.premiumcontabildf.com.br/logo.png",
+      "telephone": "+556132444605",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "SHS - Quadra 6 - Bloco E - Sala 610/612",
+        "addressLocality": "Brasília",
+        "addressRegion": "DF",
+        "postalCode": "70322-915",
+        "addressCountry": "BR"
+      }
+    }
+    </script>
+</head>
+<body class="text-slate-800">
+
+    <!-- ========== 0. Navigation Bar ========== -->
+    <header id="header" class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold text-slate-900">Premium<span class="text-accent">BPO.</span></a>
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#bpo-rh" class="text-slate-600 hover:text-accent transition-colors font-medium">BPO de Pessoas</a>
+                    <a href="#bpo-financeiro" class="text-slate-600 hover:text-accent transition-colors font-medium">BPO Financeiro</a>
+                    <a href="#vantagens" class="text-slate-600 hover:text-accent transition-colors font-medium">Vantagens</a>
+                    <a href="#ai-consultant" class="text-slate-600 hover:text-accent transition-colors font-medium flex items-center gap-1"><i data-lucide="sparkles" class="w-4 h-4"></i>Consultor IA</a>
+                    <a href="https://www.premiumcontabildf.com.br/" target="_blank" class="text-slate-600 hover:text-accent transition-colors text-sm"><i data-lucide="external-link" class="w-4 h-4 inline mr-1"></i>Site Principal</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                     <a href="https://wa.me/5561920041308?text=Ol%C3%A1,+tenho+interesse+nos+servi%C3%A7os+de+BPO+da+Premium." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-block bg-accent text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-accent-dark transition-all shadow-sm hover:shadow-md">Falar com Especialista</a>
+                     <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="Abrir menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 bg-white border-t border-slate-100">
+            <a href="#bpo-rh" class="block py-3 text-slate-600 hover:text-accent border-b border-slate-50">BPO de Gestão de Pessoas</a>
+            <a href="#bpo-financeiro" class="block py-3 text-slate-600 hover:text-accent border-b border-slate-50">BPO Financeiro</a>
+            <a href="#vantagens" class="block py-3 text-slate-600 hover:text-accent border-b border-slate-50">Vantagens</a>
+            <a href="#ai-consultant" class="block py-3 text-slate-600 hover:text-accent border-b border-slate-50 flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4"></i>Consultor IA</a>
+            <a href="https://www.premiumcontabildf.com.br/" class="block py-3 text-slate-600 hover:text-accent">Ir para o Site Principal</a>
+            <a href="https://wa.me/5561920041308?text=Ol%C3%A1,+tenho+interesse+nos+servi%C3%A7os+de+BPO+da+Premium." target="_blank" rel="noopener noreferrer" class="block mt-4 w-full text-center bg-accent text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-accent-dark transition-all">Falar com Especialista</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ========== 1. Hero Section ========== -->
+        <section class="bg-[#007376] pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden relative">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[#014849] opacity-40 rounded-full blur-3xl"></div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <div class="fade-in inline-flex items-center bg-white/10 backdrop-blur-md text-white font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-white/20">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-2"></i>
+                        Escale sua operação com inteligência
+                    </div>
+                    <h1 class="fade-in text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight" style="animation-delay: 0.2s;">
+                        Foque no seu negócio.<br>Nós cuidamos do seu time e das finanças.
+                    </h1>
+                    <p class="fade-in text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto" style="animation-delay: 0.4s;">
+                        Soluções de BPO (Business Process Outsourcing) de Gestão de Pessoas e Financeiro desenhadas para dar segurança, agilidade e inteligência de dados à sua empresa.
+                    </p>
+                    <div class="fade-in flex flex-col sm:flex-row gap-4 justify-center" style="animation-delay: 0.6s;">
+                        <a href="#bpo-financeiro" class="bg-white text-accent font-semibold px-8 py-4 rounded-lg hover:bg-slate-100 transition-all shadow-lg transform hover:-translate-y-1">Conhecer Soluções</a>
+                        <a href="https://wa.me/5561920041308?text=Gostaria+de+um+orçamento+para+terceirização+de+BPO." target="_blank" rel="noopener noreferrer" class="bg-transparent text-white font-semibold px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 transition-all transform hover:-translate-y-1">Solicitar Orçamento</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 2. BPO Gestão de Pessoas ========== -->
+        <section id="bpo-rh" class="pt-20 pb-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="fade-in">
+                        <div class="inline-flex items-center text-accent font-bold mb-4 bg-accent-light px-3 py-1 rounded-full">
+                            <i data-lucide="users" class="w-4 h-4 mr-2"></i> BPO de Gestão de Pessoas
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Tranquilidade trabalhista e foco no bem-estar do time.</h2>
+                        <p class="text-lg text-slate-600 mb-8">Administramos 100% da rotina de Departamento Pessoal da sua empresa. Minimizamos passivos trabalhistas e garantimos a conformidade com as leis vigentes, enquanto você foca na cultura e retenção de talentos.</p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                                <i data-lucide="file-text" class="w-8 h-8 text-accent mb-3"></i>
+                                <h4 class="font-bold text-slate-800 mb-1">Folha de Pagamento</h4>
+                                <p class="text-slate-600 text-sm">Processamento ágil, seguro e 100% digital da sua folha.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                                <i data-lucide="user-check" class="w-8 h-8 text-accent mb-3"></i>
+                                <h4 class="font-bold text-slate-800 mb-1">Admissão e Rescisão</h4>
+                                <p class="text-slate-600 text-sm">Cuidamos de toda a burocracia e documentação do ciclo do colaborador.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                                <i data-lucide="shield-check" class="w-8 h-8 text-accent mb-3"></i>
+                                <h4 class="font-bold text-slate-800 mb-1">eSocial e Encargos</h4>
+                                <p class="text-slate-600 text-sm">Transmissão de dados oficial e emissão de guias no prazo.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                                <i data-lucide="heart-handshake" class="w-8 h-8 text-accent mb-3"></i>
+                                <h4 class="font-bold text-slate-800 mb-1">Gestão de Benefícios</h4>
+                                <p class="text-slate-600 text-sm">Controle de VT, VR, plano de saúde e afastamentos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                         <!-- Placeholder visual para sistema de RH -->
+                         <div class="bg-[#007B7E] p-6 rounded-2xl shadow-xl relative overflow-hidden h-[500px] flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=')]"></div>
+                            
+                            <div class="w-full max-w-sm bg-white rounded-xl shadow-2xl overflow-hidden relative z-10">
+                                <div class="bg-slate-50 px-4 py-3 border-b flex justify-between items-center">
+                                    <span class="font-bold text-slate-700">Resumo do Time</span>
+                                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Atualizado</span>
+                                </div>
+                                <div class="p-4 space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+                                            <div>
+                                                <div class="h-3 w-24 bg-slate-300 rounded mb-1"></div>
+                                                <div class="h-2 w-16 bg-slate-200 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div class="h-6 w-16 bg-accent-light rounded-full"></div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+                                            <div>
+                                                <div class="h-3 w-20 bg-slate-300 rounded mb-1"></div>
+                                                <div class="h-2 w-24 bg-slate-200 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div class="h-6 w-16 bg-accent-light rounded-full"></div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+                                            <div>
+                                                <div class="h-3 w-28 bg-slate-300 rounded mb-1"></div>
+                                                <div class="h-2 w-16 bg-slate-200 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div class="h-6 w-16 bg-accent-light rounded-full"></div>
+                                    </div>
+                                    <div class="pt-4 border-t border-slate-100 mt-2">
+                                        <div class="h-8 bg-slate-100 rounded w-full flex items-center justify-center">
+                                            <div class="h-2 w-1/3 bg-slate-300 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 3. BPO Financeiro ========== -->
+        <section id="bpo-financeiro" class="pt-16 pb-24 bg-slate-50 border-t border-slate-200">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="fade-in order-2 lg:order-1">
+                        <!-- Placeholder visual para dashboard financeiro -->
+                        <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200 shadow-inner relative overflow-hidden h-[400px] flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-br from-transparent to-slate-200 opacity-50"></div>
+                            <!-- Mockup abstrato -->
+                            <div class="w-full max-w-sm space-y-4 relative z-10">
+                                <div class="h-32 bg-white rounded-xl shadow-sm flex items-end p-4 gap-2">
+                                    <div class="w-1/6 bg-accent/20 rounded-t h-1/3"></div>
+                                    <div class="w-1/6 bg-accent/40 rounded-t h-2/3"></div>
+                                    <div class="w-1/6 bg-accent/60 rounded-t h-full"></div>
+                                    <div class="w-1/6 bg-accent rounded-t h-4/5"></div>
+                                    <div class="w-1/6 bg-accent-dark rounded-t h-5/6"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-20 bg-white rounded-xl shadow-sm p-4 flex flex-col justify-center">
+                                        <div class="h-2 w-1/2 bg-slate-200 rounded mb-2"></div>
+                                        <div class="h-4 w-3/4 bg-slate-800 rounded"></div>
+                                    </div>
+                                    <div class="h-20 bg-white rounded-xl shadow-sm p-4 flex flex-col justify-center">
+                                        <div class="h-2 w-1/2 bg-slate-200 rounded mb-2"></div>
+                                        <div class="h-4 w-3/4 bg-green-500 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fade-in order-1 lg:order-2">
+                        <div class="inline-flex items-center text-accent font-bold mb-4 bg-accent-light px-3 py-1 rounded-full">
+                            <i data-lucide="pie-chart" class="w-4 h-4 mr-2"></i> BPO Financeiro
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Controle total do seu fluxo de caixa sem o peso operacional.</h2>
+                        <p class="text-lg text-slate-600 mb-8">Terceirize as rotinas financeiras da sua empresa e ganhe previsibilidade. Nossa equipe de especialistas atua como o seu departamento financeiro interno, utilizando tecnologia de ponta para garantir que cada centavo seja gerenciado com precisão.</p>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <span class="font-bold text-slate-800 block">Contas a Pagar e Receber</span>
+                                    <span class="text-slate-600 text-sm">Agendamentos, baixas e emissão de boletos e notas fiscais.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <span class="font-bold text-slate-800 block">Conciliação Bancária</span>
+                                    <span class="text-slate-600 text-sm">Conferência diária de todas as entradas e saídas.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <span class="font-bold text-slate-800 block">Relatórios Gerenciais (B.I.)</span>
+                                    <span class="text-slate-600 text-sm">Dashboards com indicadores de desempenho para tomada de decisão.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 4. Vantagens ========== -->
+        <section id="vantagens" class="pt-20 pb-20 bg-[#29888A]">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="fade-in text-3xl md:text-4xl font-extrabold text-white mb-4">Por que terceirizar com a Premium BPO?</h2>
+                <p class="fade-in text-lg text-slate-100 mb-16 max-w-2xl mx-auto">Transformamos o custo fixo de um departamento em um investimento inteligente, com ferramentas modernas e dados em tempo real.</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="fade-in bg-white/10 backdrop-blur-sm border border-white/20 p-8 rounded-2xl text-left hover:bg-white/20 transition-all">
+                        <div class="bg-white/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="trending-down" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Redução de Custos</h3>
+                        <p class="text-slate-100">Elimine despesas com softwares, infraestrutura e encargos de contratação de um time interno completo.</p>
+                    </div>
+                    
+                    <div class="fade-in bg-white/10 backdrop-blur-sm border border-white/20 p-8 rounded-2xl text-left hover:bg-white/20 transition-all" style="animation-delay: 0.2s;">
+                        <div class="bg-white/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="shield" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Risco Zero e Segurança</h3>
+                        <p class="text-slate-100">Profissionais atualizados com as legislações trabalhista e fiscal garantem que sua empresa nunca perca um prazo ou sofra penalidades.</p>
+                    </div>
+                    
+                    <div class="fade-in bg-white/10 backdrop-blur-sm border border-white/20 p-8 rounded-2xl text-left hover:bg-white/20 transition-all" style="animation-delay: 0.4s;">
+                        <div class="bg-white/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="smartphone" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Tecnologia de Ponta</h3>
+                        <p class="text-slate-100">Seu negócio ganha acesso às melhores platforms de gestão ERP e RH do mercado, já inclusas no nosso serviço.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== NEW Gemini AI Consultant Section ========== -->
+        <section id="ai-consultant" class="pt-14 pb-12 lg:pt-24 lg:pb-20 bg-[#F2F9FE]">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center p-3 bg-white rounded-full shadow-sm mb-6">
+                        <span class="text-2xl">✨</span>
+                    </div>
+                    <h2 class="fade-in text-4xl lg:text-5xl font-extrabold text-slate-900">Consultor Inteligente de BPO</h2>
+                    <p class="fade-in mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+                        Dúvidas se a terceirização financeira ou de folha é para o seu negócio?<br>
+                        Descreva o cenário da sua empresa e receba uma orientação inicial sobre como o BPO pode reduzir seus custos e aumentar sua eficiência.
+                    </p>
+                </div>
+
+                <div class="fade-in bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                    <div class="space-y-4">
+                        <label for="ai-query" class="block text-sm font-medium text-slate-700 mb-1">Qual o seu principal desafio com finanças ou gestão de pessoas hoje?</label>
+                        <textarea 
+                            id="ai-query" 
+                            rows="4" 
+                            class="w-full p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all outline-none resize-none"
+                            placeholder="Ex: Minha empresa fatura 100k, vale a pena terceirizar o financeiro? ou Como funciona o BPO para admissões e folha de pagamento?"
+                        ></textarea>
+                        
+                        <button 
+                            id="ai-submit-btn" 
+                            class="w-full bg-accent text-white font-bold py-4 rounded-xl hover:bg-accent-dark transition-all shadow-lg hover:shadow-accent/20 flex items-center justify-center gap-2 group"
+                        >
+                            <span>Analisar Cenário</span>
+                            <i data-lucide="sparkles" class="w-5 h-5 group-hover:animate-pulse"></i>
+                        </button>
+
+                        <!-- Error Message Container -->
+                        <div id="ai-error-message" class="hidden p-4 mt-2 text-sm text-red-700 bg-red-100 border border-red-200 rounded-lg" role="alert">
+                            <span class="font-bold">Atenção:</span> <span id="ai-error-text"></span>
+                        </div>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="ai-loading" class="hidden mt-8 text-center">
+                        <div class="inline-block loader mb-2"></div>
+                        <p class="text-slate-500 text-sm">Avaliando oportunidades de BPO...</p>
+                    </div>
+
+                    <!-- Result Area -->
+                    <div id="ai-result" class="hidden mt-8 p-6 bg-slate-50 rounded-xl border border-slate-200 animate-fade-in">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 bg-accent/10 p-2 rounded-lg">
+                                <i data-lucide="bot" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-slate-900 mb-2">Análise do Consultor Virtual:</h4>
+                                <div id="ai-response-text" class="text-slate-700 leading-relaxed markdown-body"></div>
+                                <div class="mt-4 pt-4 border-t border-slate-200">
+                                    <p class="text-sm text-slate-500 italic">
+                                        *Esta é uma orientação preliminar gerada por IA. Para um orçamento e plano personalizado, 
+                                        <a href="https://wa.me/5561920041308?text=Ol%C3%A1,+gostaria+de+aprofundar+o+diagn%C3%B3stico+de+BPO+iniciado+pela+IA." target="_blank" class="text-accent font-semibold hover:underline">fale com um de nossos especialistas humanos.</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 5. Final CTA ========== -->
+        <section id="contact" class="animated-gradient pt-16 pb-16">
+            <div class="container mx-auto px-6">
+                <div class="bg-white text-center rounded-3xl p-10 lg:p-16 shadow-2xl border border-slate-100 max-w-4xl mx-auto">
+                    <h2 class="fade-in text-3xl lg:text-5xl font-extrabold mb-6 text-slate-900">Modernize a Gestão da sua Empresa hoje.</h2>
+                    <p class="fade-in text-lg text-slate-600 mb-10 max-w-xl mx-auto">Nossos especialistas estão prontos para desenhar um projeto de BPO personalizado para o momento do seu negócio.</p>
+                    <a href="https://wa.me/5561920041308?text=Ol%C3%A1,+quero+agendar+uma+reuni%C3%A3o+sobre+BPO+Financeiro+e+RH." target="_blank" rel="noopener noreferrer" class="fade-in inline-flex items-center justify-center bg-accent text-white font-bold px-10 py-5 rounded-xl hover:bg-accent-dark transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg">
+                        <i data-lucide="message-circle" class="w-6 h-6 mr-3"></i> Falar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== 6. Footer (Herdado do Site Principal) ========== -->
+    <footer class="bg-[#014849] text-slate-200 py-12">
+        <div class="container mx-auto px-6 text-center">
+            
+            <div class="pb-8 mb-8 border-b border-slate-600 flex flex-col sm:flex-row justify-between text-left">
+                <div class="text-center sm:text-left order-last sm:order-none text-sm">
+                    <p>SHS - Quadra 6 - Bloco E - Sala 610/612</p>
+                    <p>Asa Sul, Brasília - DF</p>
+                </div>
+                
+                <div class="text-center order-first sm:order-none mb-4 sm:mb-0">
+                    <p>Telefone: (61) 3244-4605</p>
+                    <p>WhatsApp: (61) 92004-1308</p>
+                </div>
+                
+                <div class="flex items-center justify-center sm:justify-end order-1 sm:order-none mb-4 sm:mb-0">
+                    <p class="mr-2">Desenvolvido por</p>
+                    <a href="https://wa.me/5561991390058?text=Ol%C3%A1,+vi+que+desenvolvem+sites.+Podem+me+ajudar?+" target="_blank" rel="noopener noreferrer" aria-label="Contatar desenvolvedor no WhatsApp">
+                        <img src="logoE.webp" alt="Logo do Desenvolvedor" class="h-6 w-auto">
+                    </a>
+                </div>
+            </div>
+
+            <p class="mb-4">Premium BPO & Contabilidade © 2025</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
+                <a href="https://www.instagram.com/premium_contabil/profilecard/?igsh=Nml6bXFoaDJ3M2M3" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/premiumauditoria?mibextid=LQQJ4d&rdid=WO9gr3FgQSRucv8f&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16tyZwPXGX%2F%3Fmibextid%3DLQQJ4d#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.google.com/maps/place/Premium+Contabilidade+e+Assessoria+Empresarial+-+Escrit%C3%Bório+de+Contabilidade,+Abertura+e+Regulariza%C3%A7%C3%A3o+de+Empresas/@-15.798662,-47.886715,16z/data=!4m6!3m5!1s0x935a3ab54cd40001:0xbea273a12f0bb2d2!8m2!3d-15.7986617!4d-47.8867151!16s%2Fg%2F11cn3g_5t3?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MTAxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                    <span>Google</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5561920041308?text=Ol%C3%A1,+gostaria+de+saber+mais+sobre+o+BPO+da+Premium." target="_blank" rel="noopener noreferrer" aria-label="Fale conosco no WhatsApp" class="fixed bottom-6 right-6 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 z-[9999] flex items-center justify-center">
+        <svg viewBox="0 0 24 24" class="w-8 h-8" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.296-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts JS -->
+    <script>
+        // Inicializar ícones
+        lucide.createIcons();
+
+        // Menu Mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Animação de entrada (Fade-in)
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeInElements.forEach(el => observer.observe(el));
+        
+        // Ajuste dinâmico do padding principal (por causa do menu fixo)
+        const header = document.getElementById('header');
+        const mainContent = document.querySelector('main');
+        function setMainPadding() {
+            if (header && mainContent) {
+                mainContent.style.paddingTop = `${header.offsetHeight}px`;
+            }
+        }
+        window.addEventListener('load', setMainPadding);
+        window.addEventListener('resize', setMainPadding);
+
+        // ========== Gemini API Feature: Consultor BPO ==========
+        const diagnosticoBtn = document.getElementById('ai-submit-btn');
+        const aiQuery = document.getElementById('ai-query');
+        const aiResult = document.getElementById('ai-result');
+        const aiResponseText = document.getElementById('ai-response-text');
+        const aiLoading = document.getElementById('ai-loading');
+        const aiErrorMessage = document.getElementById('ai-error-message');
+        const aiErrorText = document.getElementById('ai-error-text');
+
+        if (diagnosticoBtn) {
+            diagnosticoBtn.addEventListener('click', handleGeminiDiagnostic);
+        }
+
+        async function handleGeminiDiagnostic() {
+            const userQuery = aiQuery.value;
+            
+            aiErrorMessage.classList.add('hidden');
+            
+            if (!userQuery) {
+                aiErrorText.textContent = "Por favor, descreva sua dúvida ou cenário atual da empresa.";
+                aiErrorMessage.classList.remove('hidden');
+                return;
+            }
+
+            showLoading(true);
+            aiResult.classList.add('hidden');
+
+            const apiKey = ""; // INSERIR AQUI SUA CHAVE DE API DO GEMINI
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const systemPrompt = `Você é um consultor especialista em BPO (Business Process Outsourcing) Financeiro e de Gestão de Pessoas da Premium Contabilidade/BPO, em Brasília.
+Seu objetivo é ajudar potenciais clientes a entenderem as vantagens da terceirização financeira e de DP/RH.
+Com base na dúvida do usuário:
+1. Demonstre empatia e autoridade no assunto de terceirização.
+2. Explique brevemente como o BPO Financeiro ou o BPO de Gestão de Pessoas resolve o problema apresentado (ganho de tempo, redução de custos fixos, conformidade legal, tecnologia embarcada).
+3. Seja conciso (máximo 3 parágrafos curtos).
+4. Use formatação Markdown (negrito, listas) para facilitar a leitura.
+5. IMPORTANTE: Termine sempre incentivando o agendamento de uma reunião com nossos especialistas para a criação de um plano de BPO sob medida.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            let response;
+            let retries = 3;
+            let delay = 1000;
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        break;
+                    } else if (response.status === 429 || response.status >= 500) {
+                        if (i === retries - 1) throw new Error(`HTTP error! status: ${response.status}`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2;
+                    } else {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                } catch (error) {
+                    if (i === retries - 1) {
+                        console.error("Gemini API Error:", error);
+                        aiErrorText.textContent = "Ocorreu um erro ao conectar com o consultor virtual. Por favor, verifique a chave de API e tente novamente.";
+                        aiErrorMessage.classList.remove('hidden');
+                        showLoading(false);
+                        return;
+                    }
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+            
+            try {
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+                    showResult(text);
+                } else {
+                     aiErrorText.textContent = "Não foi possível gerar uma resposta. Tente novamente.";
+                     aiErrorMessage.classList.remove('hidden');
+                }
+
+            } catch (error) {
+                console.error("Error parsing response:", error);
+                aiErrorText.textContent = "Erro ao processar a resposta. Tente novamente.";
+                aiErrorMessage.classList.remove('hidden');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function showLoading(isLoading) {
+            if (isLoading) {
+                aiLoading.classList.remove('hidden');
+                diagnosticoBtn.disabled = true;
+                diagnosticoBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            } else {
+                aiLoading.classList.add('hidden');
+                diagnosticoBtn.disabled = false;
+                diagnosticoBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+            }
+        }
+
+        function showResult(text) {
+            let formattedText = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') 
+                .replace(/^\* (.*$)/gm, '<ul><li>$1</li></ul>') 
+                .replace(/<\/ul>\s*<ul>/g, '') 
+                .replace(/\n/g, '<br>');
+
+            aiResponseText.innerHTML = formattedText;
+            aiResult.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
