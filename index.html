@@ -531,7 +531,7 @@
 
                     <!-- Loading State -->
                     <div id="ai-loading" class="hidden mt-8 text-center">
-                        <div class="loader inline-block mb-2"></div>
+                        <div class="inline-block loader mb-2"></div>
                         <p class="text-slate-500 text-sm">Avaliando oportunidades de BPO...</p>
                     </div>
 
@@ -690,24 +690,29 @@
             aiResult.classList.add('hidden');
 
             // API KEY INSERIDA DIRETAMENTE
-            const apiKey = "AIzaSyBLZpNDyFpZ54lkjJRRWNmlo6Gy7xVgsrE".trim(); 
-            // ESTÁVEL EM PRODUÇÃO: Uso do endpoint v1beta para suporte total a system_instruction em modelos flash.
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            const apiKey = "AIzaSyAtcZGnJdIRdFUbe0C-X8AoSt4lhRHPlTI".trim(); 
+            // ESTÁVEL EM PRODUÇÃO: Endpoint v1 é o mais recomendado para produção fora do ambiente de teste.
+            const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             
             const systemPrompt = `Você é um consultor especialista em BPO (Business Process Outsourcing) Financeiro e de Gestão de Pessoas da Premium Contabilidade/BPO, em Brasília.
 Seu objetivo é ajudar potenciais clientes a entenderem as vantagens da terceirização financeira e de DP/RH.
 Com base na dúvida do usuário:
 1. Demonstre empatia e autoridade no assunto de terceirização.
-2. Explique brevemente como o BPO Financeiro ou o BPO de Gestão de Pessoas resolve o problema apresentado (ganho de tempo, redução de custos fixos, conformidade legal, tecnologia embarcada).
+2. Explique brevemente como o BPO Financeiro ou o BPO de Gestão de Pessoas resolve o problema apresentado.
 3. Seja conciso (máximo 3 parágrafos curtos).
-4. Use formatação Markdown (negrito, listas) para facilitar a leitura.
-5. IMPORTANTE: Termine sempre incentivando o agendamento de uma reunião com nossos especialistas para a criação de um plano de BPO sob medida.`;
+4. Use formatação Markdown (negrito, listas).
+5. IMPORTANTE: Termine sempre incentivando o agendamento de uma reunião.`;
 
+            // Estrutura simplificada de payload para máxima compatibilidade
             const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
+                contents: [{ 
+                    role: "user",
+                    parts: [{ text: `Instruções de Sistema: ${systemPrompt}\n\nPergunta do Usuário: ${userQuery}` }] 
+                }],
+                generationConfig: {
+                    temperature: 0.7,
+                    maxOutputTokens: 800,
+                }
             };
 
             let response;
@@ -724,17 +729,22 @@ Com base na dúvida do usuário:
 
                     if (response.ok) {
                         break;
-                    } else if (response.status === 429 || response.status >= 500) {
-                        if (i === retries - 1) throw new Error(`HTTP error! status: ${response.status}`);
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                        delay *= 2;
                     } else {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                        const errorData = await response.json();
+                        console.error(`Gemini API Error Details (Attempt ${i+1}):`, errorData);
+                        
+                        if (response.status === 429 || response.status >= 500) {
+                            if (i === retries - 1) throw new Error(`HTTP ${response.status}`);
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            delay *= 2;
+                        } else {
+                            throw new Error(`HTTP ${response.status}: ${errorData.error?.message || 'Unknown error'}`);
+                        }
                     }
                 } catch (error) {
                     if (i === retries - 1) {
-                        console.error("Gemini API Error:", error);
-                        aiErrorText.textContent = "Ocorreu um erro ao conectar com o consultor virtual. Por favor, verifique se a API de Generative Language está ativa no console do Google Cloud e tente novamente.";
+                        console.error("Final Gemini API Error:", error);
+                        aiErrorText.textContent = `Erro de conexão: ${error.message}. Verifique se a chave de API é válida e se a 'Generative Language API' está ativada no Google Cloud Console.`;
                         aiErrorMessage.classList.remove('hidden');
                         showLoading(false);
                         return;
@@ -752,7 +762,7 @@ Com base na dúvida do usuário:
                     const text = candidate.content.parts[0].text;
                     showResult(text);
                 } else {
-                     aiErrorText.textContent = "Não foi possível gerar uma resposta. Tente novamente.";
+                     aiErrorText.textContent = "Resposta vazia recebida da IA. Tente novamente.";
                      aiErrorMessage.classList.remove('hidden');
                 }
 
