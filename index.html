@@ -427,7 +427,7 @@
                             <i data-lucide="pie-chart" class="w-4 h-4 mr-2"></i> BPO Financeiro
                         </div>
                         <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Controle total do seu fluxo de caixa sem o peso operacional.</h2>
-                        <p class="text-lg text-slate-600 mb-8">Terceirize as rotinas financeiras da sua empresa e ganhe previsibilidade. Nossa equipe de especialistas atua como o seu departamento financeiro interno, utilizando tecnologia de ponta para garantir que cada centavo seja gerenciado com precisão.</p>
+                        <p class="text-lg text-slate-600 mb-8" >Terceirize as rotinas financeiras da sua empresa e ganhe previsibilidade. Nossa equipe de especialistas atua como o seu departamento financeiro interno, utilizando tecnologia de ponta para garantir que cada centavo seja gerenciado com precisão.</p>
                         
                         <ul class="space-y-4 mb-8">
                             <li class="flex items-start">
@@ -690,9 +690,9 @@
             aiResult.classList.add('hidden');
 
             // API KEY INSERIDA DIRETAMENTE
-            const apiKey = "AIzaSyAtcZGnJdIRdFUbe0C-X8AoSt4lhRHPlTI"; 
-            // IMPORTANTE: Alterado de 'gemini-2.5-flash-preview-09-2025' para 'gemini-1.5-flash' para funcionar fora do Canvas.
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            const apiKey = "AIzaSyAtcZGnJdIRdFUbe0C-X8AoSt4lhRHPlTI".trim(); 
+            // ESTÁVEL: Alterado para 'v1' e 'gemini-1.5-flash' para garantir funcionamento fora do Canvas.
+            const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             
             const systemPrompt = `Você é um consultor especialista em BPO (Business Process Outsourcing) Financeiro e de Gestão de Pessoas da Premium Contabilidade/BPO, em Brasília.
 Seu objetivo é ajudar potenciais clientes a entenderem as vantagens da terceirização financeira e de DP/RH.
@@ -734,7 +734,7 @@ Com base na dúvida do usuário:
                 } catch (error) {
                     if (i === retries - 1) {
                         console.error("Gemini API Error:", error);
-                        aiErrorText.textContent = "Ocorreu um erro ao conectar com o consultor virtual. Por favor, verifique a chave de API e tente novamente.";
+                        aiErrorText.textContent = "Ocorreu um erro ao conectar com o consultor virtual. Por favor, verifique se a API de Generative Language está ativa no console do Google Cloud e tente novamente.";
                         aiErrorMessage.classList.remove('hidden');
                         showLoading(false);
                         return;
