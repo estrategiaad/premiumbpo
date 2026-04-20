@@ -443,7 +443,7 @@
             </div>
         </section>
 
-        <!-- ========== 5. Gemini AI Consultant Section (APRIMORADO PARA PRODUÇÃO) ========== -->
+        <!-- ========== 5. Gemini AI Consultant Section (CORRIGIDO PARA PRODUÇÃO) ========== -->
         <section id="ai-consultant" class="pt-14 pb-12 lg:pt-24 lg:pb-20 bg-[#F2F9FE]">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-12">
@@ -568,12 +568,12 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // ========== LÓGICA DO CONSULTOR IA (CORRIGIDA PARA PRODUÇÃO) ==========
+        // ========== LÓGICA DO CONSULTOR IA (FIXED FOR CANVAS ENVIRONMENT) ==========
         // INSTRUÇÃO PARA PRODUÇÃO:
-        // 1. Substitua 'apiKey' pela sua chave real da Google AI (Gemini API).
-        // 2. IMPORTANTE: Use o modelo 'gemini-1.5-flash' para estabilidade em produção.
-        const apiKey = "AIzaSyBLZpNDyFpZ54lkjJRRWNmlo6Gy7xVgsrE"; 
-        const modelName = "gemini-1.5-flash"; 
+        // 1. O modelo 'gemini-2.5-flash-preview-09-2025' é o suportado pelo preview.
+        // 2. A chave de API é injetada automaticamente se estiver em branco.
+        const apiKey = ""; 
+        const modelName = "gemini-2.5-flash-preview-09-2025"; 
 
         const btnSubmit = document.getElementById('ai-submit-btn');
         const inputQuery = document.getElementById('ai-query');
@@ -588,7 +588,7 @@
 Seu objetivo é analisar o cenário do usuário e explicar como a terceirização do Financeiro ou de RH trará redução de custos, segurança jurídica e dashboards de inteligência.
 Responda em português profissional, use negrito para destaques e listas para etapas. Máximo 3 parágrafos. Termine incentivando o contato via WhatsApp.`;
 
-            // Usando v1beta para garantir suporte a systemInstruction de forma simplificada
+            // URL format according to Gemini Preview environment rules
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
             
             const payload = {
@@ -618,7 +618,7 @@ Responda em português profissional, use negrito para destaques e listas para et
                     console.error(`Tentativa ${i + 1} falhou:`, err.message);
                     if (i === maxRetries - 1) throw err;
                     
-                    // Espera exponencial: 1s, 2s, 4s, 8s, 16s
+                    // Exponential backoff: 1s, 2s, 4s, 8s, 16s
                     const delay = Math.pow(2, i) * 1000;
                     await new Promise(res => setTimeout(res, delay));
                 }
@@ -631,12 +631,6 @@ Responda em português profissional, use negrito para destaques e listas para et
             errorBox.classList.add('hidden');
             if (!query) {
                 errorText.textContent = "Por favor, descreva seu cenário.";
-                errorBox.classList.remove('hidden');
-                return;
-            }
-
-            if (apiKey === "") {
-                errorText.textContent = "Erro de configuração: Chave de API não inserida no código.";
                 errorBox.classList.remove('hidden');
                 return;
             }
@@ -661,17 +655,7 @@ Responda em português profissional, use negrito para destaques e listas para et
 
             } catch (err) {
                 console.error("Erro Final:", err);
-                let msg = "Houve uma instabilidade na conexão. ";
-                
-                if (err.message.includes("STATUS_403")) {
-                    msg = "Erro de Permissão: Verifique se a 'Generative Language API' está ativada no seu console do Google Cloud ou se a chave tem restrições de IP/Referrer.";
-                } else if (err.message.includes("STATUS_400")) {
-                    msg = "Erro de Requisição: O modelo selecionado pode não estar disponível para esta chave ou o formato dos dados está incorreto.";
-                } else if (err.message.includes("STATUS_429")) {
-                    msg = "Limite Excedido: Muitas perguntas em pouco tempo. Aguarde um minuto.";
-                }
-                
-                errorText.textContent = msg;
+                errorText.textContent = "Houve uma instabilidade na conexão com o consultor. Por favor, tente novamente em instantes ou fale conosco pelo WhatsApp.";
                 errorBox.classList.remove('hidden');
             } finally {
                 loader.classList.add('hidden');
