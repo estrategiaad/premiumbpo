@@ -431,7 +431,7 @@
                         
                         <ul class="space-y-4 mb-8">
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5"></i>
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5"></i>
                                 <div>
                                     <span class="font-bold text-slate-800 block">Contas a Pagar e Receber</span>
                                     <span class="text-slate-600 text-sm">Agendamentos, baixas e emissão de boletos e notas fiscais.</span>
@@ -531,7 +531,7 @@
 
                     <!-- Loading State -->
                     <div id="ai-loading" class="hidden mt-8 text-center">
-                        <div class="inline-block loader mb-2"></div>
+                        <div class="loader inline-block mb-2"></div>
                         <p class="text-slate-500 text-sm">Avaliando oportunidades de BPO...</p>
                     </div>
 
@@ -691,8 +691,8 @@
 
             // API KEY INSERIDA DIRETAMENTE
             const apiKey = "AIzaSyAtcZGnJdIRdFUbe0C-X8AoSt4lhRHPlTI".trim(); 
-            // ESTÁVEL: Alterado para 'v1' e 'gemini-1.5-flash' para garantir funcionamento fora do Canvas.
-            const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            // ESTÁVEL EM PRODUÇÃO: Uso do endpoint v1beta para suporte total a system_instruction em modelos flash.
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             
             const systemPrompt = `Você é um consultor especialista em BPO (Business Process Outsourcing) Financeiro e de Gestão de Pessoas da Premium Contabilidade/BPO, em Brasília.
 Seu objetivo é ajudar potenciais clientes a entenderem as vantagens da terceirização financeira e de DP/RH.
