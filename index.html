@@ -443,7 +443,7 @@
             </div>
         </section>
 
-        <!-- ========== 5. Gemini AI Consultant Section (APRIMORADO) ========== -->
+        <!-- ========== 5. Gemini AI Consultant Section (APRIMORADO PARA PRODUÇÃO) ========== -->
         <section id="ai-consultant" class="pt-14 pb-12 lg:pt-24 lg:pb-20 bg-[#F2F9FE]">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-12">
@@ -568,12 +568,12 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // ========== LÓGICA DO CONSULTOR IA (APRIMORADA PARA PRODUÇÃO) ==========
+        // ========== LÓGICA DO CONSULTOR IA (CORRIGIDA PARA PRODUÇÃO) ==========
         // INSTRUÇÃO PARA PRODUÇÃO:
         // 1. Substitua 'apiKey' pela sua chave real da Google AI (Gemini API).
-        // 2. Garanta que a "Generative Language API" esteja ativada no console do Google Cloud.
+        // 2. IMPORTANTE: Use o modelo 'gemini-1.5-flash' para estabilidade em produção.
         const apiKey = "AIzaSyBLZpNDyFpZ54lkjJRRWNmlo6Gy7xVgsrE"; 
-        const modelName = "gemini-2.5-flash-preview-09-2025";
+        const modelName = "gemini-1.5-flash"; 
 
         const btnSubmit = document.getElementById('ai-submit-btn');
         const inputQuery = document.getElementById('ai-query');
@@ -585,14 +585,10 @@
 
         async function fetchGeminiWithRetry(prompt, maxRetries = 5) {
             const systemPrompt = `Você é o Consultor Especialista de BPO da Premium Contabilidade em Brasília.
-Seu objetivo é analisar o cenário do usuário e explicar como a terceirização do Financeiro ou de RH (Gestão de Pessoas) trará:
-1. Redução de custos fixos e operacionais.
-2. Segurança jurídica e conformidade legal (Risco Zero).
-3. Tecnologia e inteligência de dados (Dashboards).
+Seu objetivo é analisar o cenário do usuário e explicar como a terceirização do Financeiro ou de RH trará redução de custos, segurança jurídica e dashboards de inteligência.
+Responda em português profissional, use negrito para destaques e listas para etapas. Máximo 3 parágrafos. Termine incentivando o contato via WhatsApp.`;
 
-Responda em português, de forma profissional e persuasiva. Use Markdown: negrito para benefícios e listas para etapas. Máximo 3 parágrafos curtos. Finalize incentivando o agendamento de uma reunião via WhatsApp.`;
-
-            // Para produção, 'v1beta' é comum para modelos preview, mas 'v1' é mais estável se o modelo permitir.
+            // Usando v1beta para garantir suporte a systemInstruction de forma simplificada
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
             
             const payload = {
@@ -610,19 +606,19 @@ Responda em português, de forma profissional e persuasiva. Use Markdown: negrit
 
                     if (!response.ok) {
                         const errorData = await response.json();
-                        throw new Error(`API_ERROR: ${response.status} - ${errorData.error?.message || 'Erro desconhecido'}`);
+                        throw new Error(`STATUS_${response.status}: ${errorData.error?.message || 'Erro desconhecido'}`);
                     }
 
                     const data = await response.json();
                     const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                    if (!text) throw new Error("A API retornou uma resposta vazia.");
+                    if (!text) throw new Error("A API retornou uma resposta sem texto.");
                     return text;
 
                 } catch (err) {
                     console.error(`Tentativa ${i + 1} falhou:`, err.message);
                     if (i === maxRetries - 1) throw err;
                     
-                    // Exponential backoff: 1s, 2s, 4s, 8s, 16s
+                    // Espera exponencial: 1s, 2s, 4s, 8s, 16s
                     const delay = Math.pow(2, i) * 1000;
                     await new Promise(res => setTimeout(res, delay));
                 }
@@ -634,12 +630,17 @@ Responda em português, de forma profissional e persuasiva. Use Markdown: negrit
             
             errorBox.classList.add('hidden');
             if (!query) {
-                errorText.textContent = "Por favor, descreva seu cenário ou dúvida para que possamos analisar.";
+                errorText.textContent = "Por favor, descreva seu cenário.";
                 errorBox.classList.remove('hidden');
                 return;
             }
 
-            // UI Feedback
+            if (apiKey === "") {
+                errorText.textContent = "Erro de configuração: Chave de API não inserida no código.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
             loader.classList.remove('hidden');
             resultBox.classList.add('hidden');
             btnSubmit.disabled = true;
@@ -647,32 +648,30 @@ Responda em português, de forma profissional e persuasiva. Use Markdown: negrit
             try {
                 const response = await fetchGeminiWithRetry(query);
                 
-                // Formatação Markdown simples para HTML seguro
+                // Formatação Markdown simples
                 let formatted = response
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Negrito
-                    .replace(/^\* (.*$)/gm, '<li>$1</li>')            // Itens de lista
-                    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')        // Envolver lista
-                    .replace(/\n/g, '<br>');                          // Quebras de linha
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/^\* (.*$)/gm, '<li>$1</li>')
+                    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+                    .replace(/\n/g, '<br>');
 
                 responseText.innerHTML = formatted;
                 resultBox.classList.remove('hidden');
-                
-                // Scroll para o resultado
                 resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             } catch (err) {
                 console.error("Erro Final:", err);
-                let userFriendlyError = "Houve uma falha técnica ao consultar a IA. ";
+                let msg = "Houve uma instabilidade na conexão. ";
                 
-                if (err.message.includes("API_ERROR: 403") || apiKey === "") {
-                    userFriendlyError += "A chave de API está ausente ou é inválida para este domínio.";
-                } else if (err.message.includes("429")) {
-                    userFriendlyError += "Muitas solicitações simultâneas. Tente novamente em instantes.";
-                } else {
-                    userFriendlyError += "Por favor, tente novamente ou fale conosco diretamente pelo WhatsApp.";
+                if (err.message.includes("STATUS_403")) {
+                    msg = "Erro de Permissão: Verifique se a 'Generative Language API' está ativada no seu console do Google Cloud ou se a chave tem restrições de IP/Referrer.";
+                } else if (err.message.includes("STATUS_400")) {
+                    msg = "Erro de Requisição: O modelo selecionado pode não estar disponível para esta chave ou o formato dos dados está incorreto.";
+                } else if (err.message.includes("STATUS_429")) {
+                    msg = "Limite Excedido: Muitas perguntas em pouco tempo. Aguarde um minuto.";
                 }
                 
-                errorText.textContent = userFriendlyError;
+                errorText.textContent = msg;
                 errorBox.classList.remove('hidden');
             } finally {
                 loader.classList.add('hidden');
