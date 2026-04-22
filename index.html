@@ -578,11 +578,10 @@
         /**
          * CONFIGURAÇÃO DA IA PARA PRODUÇÃO
          * 1. Insira sua chave da Gemini API em 'const apiKey'.
-         * 2. No seu servidor de produção, use 'const modelName = "gemini-1.5-flash"'.
-         * 3. O modelo 'gemini-2.5-flash-preview-09-2025' funciona apenas dentro do ambiente de testes.
+         * 2. O código detectará automaticamente a chave e usará o modelo 'gemini-1.5-flash' (estável para produção).
          */
-        const apiKey = "AIzaSyBLZpNDyFpZ54lkjJRRWNmlo6Gy7xVgsrE"; 
-        const modelName = "gemini-2.5-flash-preview-09-2025"; 
+        const apiKey = "AIzaSyBLZpNDyFpZ54lkjJRRWNmlo6Gy7xVgsrE"; // <--- INSIRA SUA CHAVE DA API AQUI
+        const modelName = apiKey.trim() === "" ? "gemini-2.5-flash-preview-09-2025" : "gemini-1.5-flash"; 
 
         const btnSubmit = document.getElementById('ai-submit-btn');
         const inputQuery = document.getElementById('ai-query');
@@ -594,10 +593,9 @@
 
         async function fetchGeminiWithRetry(userQuery, maxRetries = 5) {
             const systemPrompt = `Você é o Consultor Especialista de BPO da Premium Contabilidade em Brasília.
-            Seu objetivo é analisar o cenário do usuário e explicar como a terceirização do Financeiro ou de RH trará redução de custos, segurança jurídica e dashboards de inteligência.
-            Responda em português profissional, use negrito para destaques e listas para etapas. Máximo 3 parágrafos. Termine incentivando o contato via WhatsApp.`;
+Seu objetivo é analisar o cenário do usuário e explicar como a terceirização do Financeiro ou de RH trará redução de custos, segurança jurídica e dashboards de inteligência.
+Responda em português profissional, use negrito para destaques e listas para etapas. Máximo 3 parágrafos. Termine incentivando o contato via WhatsApp.`;
 
-            // Para produção fora do Canvas, use o endpoint v1 se usar o gemini-1.5-flash
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
             
             const payload = {
@@ -664,7 +662,7 @@
 
             } catch (err) {
                 console.error("Erro Final:", err);
-                errorText.textContent = "Não foi possível conectar com o consultor IA. Verifique se a chave de API foi inserida e se o modelo está correto para produção.";
+                errorText.textContent = "Não foi possível conectar com o consultor IA. Verifique se a chave de API foi inserida e é válida para produção.";
                 errorBox.classList.remove('hidden');
             } finally {
                 loader.classList.add('hidden');
